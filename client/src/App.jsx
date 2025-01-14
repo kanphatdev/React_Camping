@@ -1,10 +1,11 @@
-import { Button } from "./components/ui/button"
+
+import AppRoutes from "./routes/AppRoutes"
 
 const App = () => {
   return (
     <div>
-      
-      <Button >Click me</Button>
+    
+     <AppRoutes/>
     </div>
   )
 }
