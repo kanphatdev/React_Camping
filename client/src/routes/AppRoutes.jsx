@@ -5,7 +5,7 @@ import Dashboard from "@/pages/admin/Dashboard";
 import Manage from "@/pages/admin/Manage";
 import Notfound from "@/pages/error/Notfound";
 import Home from "@/pages/Home";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
