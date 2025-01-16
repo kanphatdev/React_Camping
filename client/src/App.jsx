@@ -1,12 +1,12 @@
-
-import AppRoutes from "./routes/AppRoutes"
+import { Toaster } from "./components/ui/toaster";
+import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {
   return (
     <div>
-    
-     <AppRoutes/>
+      <AppRoutes />
+      <Toaster />
     </div>
-  )
-}
-export default App
+  );
+};
+export default App;

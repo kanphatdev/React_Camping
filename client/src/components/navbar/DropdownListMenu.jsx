@@ -9,15 +9,14 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
-  SignOutButton,
   SignUpButton,
-  UserButton,
 } from "@clerk/clerk-react";
 import { AlignLeft, BookUser, LogIn } from "lucide-react";
 import UserIcon from "./UserIcon";
 import { Button } from "../ui/button";
 import { links } from "@/utils/links";
 import { Link } from "react-router";
+import SignOutLink from "./SignOutLink";
 const DropdownListMenu = () => {
   return (
     <DropdownMenu>
@@ -57,8 +56,9 @@ const DropdownListMenu = () => {
         </SignedOut>
         <SignedIn>
           <DropdownMenuItem>
-            <UserButton />
-            <SignOutButton />
+            {/* <UserButton />
+            <SignOutButton /> */}
+            <SignOutLink/>
           </DropdownMenuItem>
         </SignedIn>
       </DropdownMenuContent>
