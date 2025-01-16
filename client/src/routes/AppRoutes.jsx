@@ -1,6 +1,7 @@
 import Layout from "@/layouts/Layout";
 import LayoutAdmin from "@/layouts/LayoutAdmin";
 import About from "@/pages/About";
+import Camping from "@/pages/admin/Camping";
 import Dashboard from "@/pages/admin/Dashboard";
 import Manage from "@/pages/admin/Manage";
 import Notfound from "@/pages/error/Notfound";
@@ -30,6 +31,7 @@ const AppRoutes = () => {
           
           <Route index element={<Dashboard/>} />
           <Route path="manage/:id" element={<Manage/>} />
+          <Route path="camping" element={<Camping/>} />
         </Route>
 
         {/* 404 route */}
