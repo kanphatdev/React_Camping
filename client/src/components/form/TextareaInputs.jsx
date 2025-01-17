@@ -3,7 +3,7 @@
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 
-const TextareaInputs = ({register,name,type,placeholder}) => {
+const TextareaInputs = ({register,name,type,placeholder,errors}) => {
 
   return (
     <div className="mb-2">
@@ -14,9 +14,12 @@ const TextareaInputs = ({register,name,type,placeholder}) => {
         name={name}
         id=""
         placeholder={placeholder}
-        className="capitalize"
+        className={`${errors[name] && "border-rose-500"}`}
         rows={5}
       />
+          {errors[name] && (
+        <p className="text-rose-500 text-sm">{errors[name].message}</p>
+      )}
     </div>
   );
 };
