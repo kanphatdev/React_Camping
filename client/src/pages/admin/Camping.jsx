@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { campingSchema } from "@/utils/Schema";
 import Buttons from "@/components/form/Buttons";
 import CategoriesInputs from "@/components/form/CategoriesInputs";
+import Mainmap from "@/components/map/Mainmap";
 
 const Camping = () => {
   const { register, handleSubmit, formState, setValue } = useForm({
@@ -49,6 +50,7 @@ const Camping = () => {
               register={register}
               setValue={setValue}
             />
+            <Mainmap register={register} setValue={setValue}/>
             <Buttons
               text={"create Camping"}
               isPending={isSubmitting}
