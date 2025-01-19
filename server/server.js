@@ -1,8 +1,13 @@
 const express = require("express"); // Import Express module
 const cors = require("cors"); // Import Cors module
 const app = express(); // Create an instance of an Express application
-app.use(cors())
-const port = 5000
+const campingRoute = require("./routes/camping");
+// middleware
+app.use(cors());
+app.use(express.json());
+
+const port = 5000;
+
 // Define a simple route
 app.get("/", (req, res) => {
   res.send("Hello, Express!");
