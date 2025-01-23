@@ -1,15 +1,52 @@
-const renderError = require("../utils/renderError");
+exports.listProfiles = (req, res) => {
+  try {
+    res.send("List profiles controller");
+    console.log("List profiles controller");
+  } catch (error) {
+    console.log("Server error");
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
-exports.createProfile = (req,res,next) => {
-    try {
-        if (true) {
-            return renderError(400,"password invalid")
-        }
-        console.log("createProfile controllers");
-        res.status(200).json({message:'createProfile controllers'})
-        
-    } catch (error) {
-        console.log(error.message);
-        next(error)
-    }
-}
+exports.readProfile = (req, res) => {
+  try {
+    res.send("Read profile controller");
+    console.log("Read profile controller");
+  } catch (error) {
+    console.log("Server error");
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+exports.createProfile = (req, res,next) => {
+  try {
+    const { firstname, lastname,clerkid} = req.body;
+    res.json({ firstname, lastname,clerkid });
+    console.log("Profile created with:", { firstname, lastname,clerkid });
+  } catch (error) {
+    console.log("Server error");
+    res.status(500).json({ message: "Internal Server Error" });
+    next(error)
+  }
+};
+
+exports.editProfile = (req, res) => {
+  try {
+    const { name, age } = req.body;
+    res.send("Edit profile");
+    console.log("Profile ID to edit:", req.params.id, "New data:", { name, age });
+  } catch (error) {
+    console.log("Server error");
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+exports.removeProfile = (req, res) => {
+  try {
+    res.send("Delete profile");
+    console.log("Profile ID to delete:", req.params.id);
+  } catch (error) {
+    console.log("Server error");
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
