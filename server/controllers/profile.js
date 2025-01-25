@@ -20,8 +20,8 @@ exports.readProfile = (req, res) => {
 
 exports.createProfile = (req, res,next) => {
   try {
-    const { firstname, lastname,clerkid} = req.body;
-    res.json({ firstname, lastname,clerkid });
+    const { firstname, lastname} = req.body;
+    res.json({ firstname, lastname});
     console.log("Profile created with:", { firstname, lastname,clerkid });
   } catch (error) {
     console.log("Server error");

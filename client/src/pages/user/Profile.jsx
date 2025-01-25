@@ -4,6 +4,7 @@ import { profileSchema } from "@/utils/Schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { createProfile } from "@/api/profile";
 // clerk
 import { useAuth } from "@clerk/clerk-react";
 const Profile = () => {
@@ -14,19 +15,17 @@ const Profile = () => {
     });
   const { errors, isSubmitting } = formState;
   const ProfileonSubmit = async (data) => {
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
-    const token = getToken()
-    
-    
-    console.log(token);
-    await axios
-      .post("http://localhost:5000/api/profile", data)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const token = await getToken()
+    createProfile(data,token).then((res) => {
+
+
+      console.log(res);
+      
+    }).catch((err) => {
+      console.log(err);
+      
+    })
+
   };
   return (
     <section>
