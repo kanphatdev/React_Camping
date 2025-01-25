@@ -4,11 +4,13 @@ const app = express(); // Create an instance of an Express application
 const morgan = require("morgan");
 const { readdirSync } = require("fs");
 const handleError = require("./utils/error");
+const {clerkMiddleware} = require("@clerk/express")
 
+require("dotenv/config")
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-
+app.use(clerkMiddleware())
 const port = 5000;
 
 // Dynamically load and use routes

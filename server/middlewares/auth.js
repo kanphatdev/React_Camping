@@ -1,15 +1,14 @@
-exports.authCheck = (req,res,next) => {
-try {
-    console.log("middleware");
-    if (true) {
-      next()
-    }else{
-      res.status(401).json({ message: "access denied" });
-    }
-  
-} catch (error) {
-  res.status(500).json({ message: "Internal Server Error" });
+const renderError = require("../utils/renderError");
+const {clerkClient} = require("@clerk/express")
+exports.authCheck =async (req, res, next) => {
+  try {
+const userId = req.auth.userId;
+if (!userId) {
+  return renderError(401,'unauthorize!!')
 }
-
-  
-}
+next()
+const user = await clerkClient.users.getUser(userId)
+  } catch (error) {
+    next(error)
+  }
+};
