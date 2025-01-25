@@ -1,14 +1,24 @@
 import Buttons from "@/components/form/Buttons";
 import FormInputs from "@/components/form/FormInputs";
+import { profileSchema } from "@/utils/Schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+// clerk
+import { useAuth } from "@clerk/clerk-react";
 const Profile = () => {
-  const { register, handleSubmit, formState, setValue } = useForm();
+  // clerk
+  const {getToken,userId} = useAuth()
+  const { register, handleSubmit, formState, setValue } = useForm({
+      resolver: zodResolver(profileSchema),
+    });
   const { errors, isSubmitting } = formState;
   const ProfileonSubmit = async (data) => {
     // await new Promise((resolve) => setTimeout(resolve, 3000));
-    console.log(data);
+    const token = getToken()
+    
+    
+    console.log(token);
     await axios
       .post("http://localhost:5000/api/profile", data)
       .then((res) => {
